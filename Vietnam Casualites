@@ -1,0 +1,90 @@
+import React from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
+const VietnamCasualties = () => {
+  // Estimated casualties by year (these are historical estimates)
+  // Note: North Vietnamese/Viet Cong casualties are combined as they're often reported together
+  // South Vietnamese casualties include both military and civilian estimates
+  const casualtyData = [
+    { year: '1964', us: 216, southVietnam: 7500, northVietnam: 9000 },
+    { year: '1965', us: 1928, southVietnam: 11000, northVietnam: 35000 },
+    { year: '1966', us: 6350, southVietnam: 15000, northVietnam: 55000 },
+    { year: '1967', us: 11363, southVietnam: 27000, northVietnam: 88000 },
+    { year: '1968', us: 16899, southVietnam: 48000, northVietnam: 110000 },
+    { year: '1969', us: 11780, southVietnam: 22000, northVietnam: 90000 },
+    { year: '1970', us: 6173, southVietnam: 30000, northVietnam: 75000 },
+    { year: '1971', us: 2414, southVietnam: 22000, northVietnam: 69000 },
+    { year: '1972', us: 759, southVietnam: 39000, northVietnam: 100000 },
+    { year: '1973', us: 168, southVietnam: 27000, northVietnam: 75000 }
+  ];
+
+  return (
+    <div className="w-full bg-white p-4 rounded shadow">
+      <h2 className="text-xl font-bold mb-2 text-center">Vietnam War Casualties (1964-1973)</h2>
+      <p className="text-sm mb-4 text-center text-gray-600">Estimated military deaths by year</p>
+      
+      <div className="w-full h-80">
+        <ResponsiveContainer width="100%" height="100%">
+          <BarChart
+            data={casualtyData}
+            margin={{ top: 20, right: 30, left: 20, bottom: 20 }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="year" />
+            <YAxis />
+            <Tooltip 
+              formatter={(value, name) => {
+                return [`${value.toLocaleString()} deaths`, {
+                  'us': 'U.S. Forces',
+                  'southVietnam': 'South Vietnamese',
+                  'northVietnam': 'North Vietnamese/VC'
+                }[name]];
+              }}
+              labelFormatter={(label) => `Year: ${label}`}
+            />
+            <Legend 
+              payload={[
+                { value: 'U.S. Forces', type: 'square', color: '#0066cc' },
+                { value: 'South Vietnamese', type: 'square', color: '#ffcc00' },
+                { value: 'North Vietnamese/VC', type: 'square', color: '#cc0000' }
+              ]}
+            />
+            <Bar dataKey="us" name="us" stackId="a" fill="#0066cc" />
+            <Bar dataKey="southVietnam" name="southVietnam" stackId="a" fill="#ffcc00" />
+            <Bar dataKey="northVietnam" name="northVietnam" stackId="a" fill="#cc0000" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      
+      <div className="mt-4 text-center border-t pt-2">
+        <div className="inline-block px-2 py-1 mr-2 bg-blue-100 border border-blue-600 rounded text-sm">
+          <span className="font-bold">Johnson (1964-1968):</span> Rapid casualty increase
+        </div>
+        <div className="inline-block px-2 py-1 bg-red-100 border border-red-600 rounded text-sm">
+          <span className="font-bold">Nixon (1969-1973):</span> Decreasing U.S. casualties
+        </div>
+      </div>
+      
+      <div className="mt-4 text-sm">
+        <h3 className="font-bold text-center text-lg mb-2">Total Casualties (1964-1973)</h3>
+        <div className="grid grid-cols-3 gap-4 mb-4">
+          <div className="bg-blue-100 p-3 rounded text-center">
+            <p className="font-bold text-blue-800">U.S. Forces</p>
+            <p className="text-2xl">58,030</p>
+          </div>
+          <div className="bg-yellow-100 p-3 rounded text-center">
+            <p className="font-bold text-yellow-800">South Vietnamese</p>
+            <p className="text-2xl">241,500</p>
+          </div>
+          <div className="bg-red-100 p-3 rounded text-center">
+            <p className="font-bold text-red-800">North Vietnamese/VC</p>
+            <p className="text-2xl">707,000</p>
+          </div>
+        </div>
+        <p className="text-gray-600"><strong>Note:</strong> Casualty figures are historical estimates and vary between sources. North Vietnamese/Viet Cong casualties are particularly difficult to verify. South Vietnamese figures include both military and civilian estimates. These numbers are provided to show general trends rather than exact counts.</p>
+      </div>
+    </div>
+  );
+};
+
+export default VietnamCasualties;
