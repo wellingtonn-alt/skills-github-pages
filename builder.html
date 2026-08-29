@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a set — Chronology</title>
+<meta name="description" content="Paste a list of events and get a finished set file for the Chronology game.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div>
+      <h2 class="site-title">📜 Chronology — build a set</h2>
+    </div>
+    <nav aria-label="Page controls">
+      <a href="index.html">← Back to the game</a>
+    </nav>
+  </header>
+
+  <p class="subtitle">
+    Paste a plain list of events, one per line, as <code>date | event | note</code>. This page checks it,
+    shows you a preview, and gives you a finished file to drop into the site's <code>sets</code> folder.
+    You never need to write or edit JSON by hand.
+  </p>
+
+  <div class="builder-grid">
+    <section aria-labelledby="input-heading">
+      <h2 id="input-heading" class="sr-only">Set details</h2>
+
+      <div class="field">
+        <label for="set-title">Set title</label>
+        <input type="text" id="set-title" placeholder="e.g. Cold War: The Americas">
+      </div>
+
+      <div class="field">
+        <label for="set-slug">Link (auto-filled from the title — this becomes the shareable link)</label>
+        <input type="text" id="set-slug" placeholder="e.g. cold-war-americas">
+        <p class="hint" id="slug-preview"></p>
+      </div>
+
+      <div class="field">
+        <label for="set-description">Short description (optional, shown above the timeline)</label>
+        <input type="text" id="set-description" placeholder="e.g. Cuba, Chile, and the interventions that followed">
+      </div>
+
+      <div class="field">
+        <label for="event-list">Events, one per line</label>
+        <textarea id="event-list" rows="16" placeholder="1973-09-11 | The Chilean armed forces overthrow Allende | Bridges Topic 4 and the Topic 6 country study"></textarea>
+        <p class="hint">
+          Format: <code>date | event text | note (optional)</code>. Dates can be <code>YYYY</code>, <code>YYYY-MM</code>, or <code>YYYY-MM-DD</code>.
+          Blank lines and lines starting with <code>#</code> are ignored. <strong>The first event you list becomes the free starting anchor.</strong>
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="preview-heading">
+      <h2 id="preview-heading" style="font-size: 1.2rem;">Preview</h2>
+      <div id="preview-summary" class="hint"></div>
+      <div id="preview-table-wrap" style="overflow-x:auto;"></div>
+      <ul id="issues" class="issue-list"></ul>
+
+      <div class="actions-row">
+        <button type="button" id="download-btn" class="button" disabled>Download JSON file</button>
+        <button type="button" id="test-btn" class="button secondary" disabled>Play a test round</button>
+      </div>
+      <p class="hint" id="download-hint"></p>
+    </section>
+  </div>
+</div>
+
+<script src="js/dates.js"></script>
+<script src="js/builder.js"></script>
+</body>
+</html>

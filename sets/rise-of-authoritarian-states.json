@@ -1,0 +1,57 @@
+{
+  "id": "rise-of-authoritarian-states",
+  "title": "Rise of the Authoritarian States",
+  "description": "Italy, the USSR, and Germany, 1917–1938 — how three single-party states were built.",
+  "events": [
+    {
+      "date": "1917-11-07",
+      "text": "The Bolsheviks seize power in Russia",
+      "note": "Anchor event: the starting point for the Soviet case study."
+    },
+    {
+      "date": "1922-10-28",
+      "text": "Benito Mussolini's March on Rome leads to his appointment as Prime Minister",
+      "note": "Italy is the first of the three states to fall under single-party rule."
+    },
+    {
+      "date": "1924-01-21",
+      "text": "Vladimir Lenin dies, opening a succession struggle in the Soviet Union",
+      "note": "Begins the power struggle that Stalin eventually wins."
+    },
+    {
+      "date": "1925-01-03",
+      "text": "Mussolini publicly claims responsibility for Fascist violence and declares a dictatorship",
+      "note": "The point at which Fascist Italy stops pretending to be a normal parliamentary state."
+    },
+    {
+      "date": "1928-10-01",
+      "text": "Stalin launches the first Five-Year Plan in the Soviet Union",
+      "note": "Rapid industrialisation and collectivisation begin."
+    },
+    {
+      "date": "1933-01-30",
+      "text": "Adolf Hitler is appointed Chancellor of Germany",
+      "note": "Bridges Topic 4 (Authoritarian States) and the Germany country study."
+    },
+    {
+      "date": "1933-03-23",
+      "text": "The German Reichstag passes the Enabling Act, letting Hitler's government rule by decree",
+      "note": "The key legal step in the Nazi consolidation of power."
+    },
+    {
+      "date": "1934-06-30",
+      "text": "The Night of the Long Knives: Hitler purges the SA leadership and other rivals",
+      "note": "Removes internal Nazi Party rivals and reassures the army."
+    },
+    {
+      "date": "1934-12-01",
+      "text": "Soviet official Sergei Kirov is assassinated in Leningrad",
+      "note": "Used by Stalin as a pretext to launch the Great Terror."
+    },
+    {
+      "date": "1938-03-12",
+      "text": "Germany annexes Austria in the Anschluss",
+      "note": "Marks the start of Nazi Germany's territorial expansion."
+    }
+  ]
+}

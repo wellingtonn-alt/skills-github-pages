@@ -1,54 +1,54 @@
-<header>
+# Chronology
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+A tap-to-place chronology game for IB History classes, in the style of the
+New York Times *Flashback*. One event starts on a timeline as a free
+"anchor". The rest are dealt one at a time, and the player taps where each
+one belongs — before or after what's already there. Dates stay hidden
+until a card is committed; a wrong guess slides the card to its true spot
+and scores nothing.
 
-# GitHub Pages
+It's a static site: no server, no database, no accounts, and no student
+data ever leaves the device — scores only ever exist in the browser tab
+that's playing.
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+## Playing a set
 
-</header>
+Every set has its own link:
 
-<!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
--->
+```
+https://your-site/?set=cold-war-americas
+```
 
-## Step 1: Enable GitHub Pages
+That's the only thing a teacher needs to paste into Canvas as the Do Now.
+Opening the site with no `?set=` at all shows a small picker with the
+built-in sets and a link to the builder.
 
-_Welcome to GitHub Pages and Jekyll :tada:!_
+## Building a new set
 
-The first step is to enable GitHub Pages on this [repository](https://docs.github.com/en/get-started/quickstart/github-glossary#repository). When you enable GitHub Pages on a repository, GitHub takes the content that's on the main branch and publishes a website based on its contents.
+Open **`builder.html`** (linked from the top of the game page). Paste a
+plain list of events, one per line:
 
-### :keyboard: Activity: Enable GitHub Pages
+```
+1973-09-11 | The Chilean armed forces overthrow Allende | Bridges Topic 4 and the Topic 6 country study
+```
 
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Under your repository name, click **Settings**.
-1. Click **Pages** in the **Code and automation** section.
-1. Ensure "Deploy from a branch" is selected from the **Source** drop-down menu, and then select `main` from the **Branch** drop-down menu.
-1. Click the **Save** button.
-1. Wait about _one minute_ then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
-   > Turning on GitHub Pages creates a deployment of your repository. GitHub Actions may take up to a minute to respond while waiting for the deployment. Future steps will be about 20 seconds; this step is slower.
-   > **Note**: In the **Pages** of **Settings**, the **Visit site** button will appear at the top. Click the button to see your GitHub Pages site.
+The page checks it as you type, shows a preview table, and — once
+everything looks right — lets you download a finished `.json` file. Drop
+that file into the `sets/` folder and commit it; that's the entire
+handoff. No one needs to write or edit JSON by hand. Full field reference:
+[`SCHEMA.md`](SCHEMA.md).
 
-<footer>
+## Publishing / hosting
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+This is a plain static site (HTML, CSS, and JavaScript — no build step).
+To host it on GitHub Pages: **Settings → Pages → Source: "Deploy from a
+branch" → Branch: `main`**, then save. GitHub gives you a URL a minute or
+two later; that's the base for every `?set=` link.
 
----
+## Repository layout
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+- `index.html`, `js/game.js`, `css/style.css` — the game itself.
+- `builder.html`, `js/builder.js` — the set-authoring page.
+- `js/dates.js` — shared date parsing, used by both the game and the builder.
+- `sets/*.json` — one file per set. Two are included as examples.
+- `SCHEMA.md` — the set file format, for reference.

@@ -1,0 +1,482 @@
+/* Chronology — shared styles for the game and the builder. */
+
+:root {
+  --ink: #1a1a2e;
+  --paper: #fbfaf7;
+  --paper-raised: #ffffff;
+  --line: #d8d5cc;
+  --accent: #8b2635;
+  --accent-ink: #ffffff;
+  --good: #1e6b3c;
+  --good-bg: #e5f4ea;
+  --bad: #a3271f;
+  --bad-bg: #fbe9e7;
+  --muted: #6b6a66;
+  --focus: #1c5fa8;
+  --radius: 10px;
+
+  --step: 1rem;
+  --step-lg: 1.35rem;
+  --step-title: 1.9rem;
+}
+
+body.display-large {
+  --step: 1.35rem;
+  --step-lg: 1.9rem;
+  --step-title: 2.6rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--step);
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 3rem;
+}
+
+a {
+  color: var(--focus);
+}
+
+h1, h2, h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.2;
+}
+
+h1.title {
+  font-size: var(--step-title);
+  margin: 0 0 0.15em;
+}
+
+.site-title {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+p.subtitle {
+  color: var(--muted);
+  margin-top: 0;
+  font-size: var(--step-lg);
+}
+
+/* Top bar shared by both pages */
+.topbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.topbar nav a {
+  margin-left: 1rem;
+  font-size: 0.95rem;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.button {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6em 1.1em;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--line);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Display-size toggle */
+.display-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.4em 0.8em;
+  background: var(--paper-raised);
+}
+
+/* ---------- Home / set picker ---------- */
+
+.set-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.set-card {
+  display: block;
+  background: var(--paper-raised);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.set-card:hover,
+.set-card:focus-visible {
+  border-color: var(--accent);
+}
+
+.set-card h3 {
+  margin: 0 0 0.2em;
+  font-size: var(--step-lg);
+}
+
+.set-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.set-card code {
+  color: var(--muted);
+  font-size: 0.85em;
+}
+
+/* ---------- Game screen ---------- */
+
+.status-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+  font-size: var(--step-lg);
+}
+
+.score-badge {
+  font-weight: bold;
+}
+
+#feedback {
+  min-height: 1.6em;
+  font-size: var(--step-lg);
+  font-weight: bold;
+}
+
+#feedback.good { color: var(--good); }
+#feedback.bad { color: var(--bad); }
+
+.deal-card {
+  background: var(--paper-raised);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 1.4em 1.6em;
+  font-size: var(--step-lg);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 3px 0 var(--ink);
+}
+
+.deal-card .eyebrow {
+  display: block;
+  font-family: Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7em;
+  color: var(--muted);
+  margin-bottom: 0.4em;
+}
+
+/* Timeline: alternating slot buttons and placed cards, in one flex column */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.timeline-item {
+  background: var(--paper-raised);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1em 1.2em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item {
+    transition: none;
+  }
+}
+
+.timeline-item.anchor {
+  border-color: var(--ink);
+  border-style: dashed;
+}
+
+.timeline-item .event-date {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: var(--accent);
+  font-size: 0.85em;
+  display: block;
+  margin-bottom: 0.2em;
+}
+
+.timeline-item .event-note {
+  color: var(--muted);
+  font-size: 0.85em;
+  margin: 0.4em 0 0;
+}
+
+.timeline-item.just-moved {
+  animation: settle 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item.just-moved {
+    animation: none;
+  }
+}
+
+@keyframes settle {
+  0% { background: var(--bad-bg); }
+  100% { background: var(--paper-raised); }
+}
+
+.timeline-item.correct-flash {
+  animation: settle-good 0.6s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item.correct-flash {
+    animation: none;
+  }
+}
+
+@keyframes settle-good {
+  0% { background: var(--good-bg); }
+  100% { background: var(--paper-raised); }
+}
+
+/* Slot buttons: the tappable gaps between/around timeline cards */
+.slot-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 2.4em;
+  border: 2px dashed var(--line);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.9em;
+}
+
+.slot-button:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.slot-button[aria-pressed="true"] {
+  border-style: solid;
+  border-color: var(--accent);
+  background: #f7ebec;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.confirm-row {
+  display: flex;
+  justify-content: center;
+  margin: 0.75rem 0;
+}
+
+.confirm-row[hidden] {
+  display: none;
+}
+
+.end-screen {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.end-score {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.end-note {
+  color: var(--muted);
+  max-width: 34rem;
+  margin: 0.5rem auto 1.5rem;
+}
+
+.privacy-note {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-family: Arial, sans-serif;
+}
+
+.error-box {
+  background: var(--bad-bg);
+  border: 2px solid var(--bad);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  color: var(--bad);
+}
+
+/* ---------- Builder ---------- */
+
+.builder-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 60rem) {
+  .builder-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3em;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.6em;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  color: var(--ink);
+}
+
+textarea {
+  font-family: 'Courier New', monospace;
+  min-height: 16rem;
+  resize: vertical;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.hint {
+  font-family: Arial, sans-serif;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-top: 0.3em;
+}
+
+table.preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+table.preview-table th,
+table.preview-table td {
+  text-align: left;
+  padding: 0.5em 0.6em;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+table.preview-table th {
+  font-family: Arial, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.row-error {
+  background: var(--bad-bg);
+}
+
+.anchor-tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper-raised);
+  font-family: Arial, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15em 0.5em;
+  border-radius: 999px;
+  margin-left: 0.4em;
+}
+
+.issue-list {
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  color: var(--bad);
+  padding-left: 1.2em;
+}
+
+.actions-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

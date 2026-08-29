@@ -1,0 +1,67 @@
+{
+  "id": "cold-war-americas",
+  "title": "Cold War: The Americas",
+  "description": "Cuba, Chile, and the interventions that followed, 1959–1990.",
+  "events": [
+    {
+      "date": "1959-01-01",
+      "text": "Fidel Castro's revolutionaries overthrow the Batista government in Cuba",
+      "note": "Anchor event: the starting point for the rest of the region's Cold War."
+    },
+    {
+      "date": "1961-04-17",
+      "text": "A CIA-backed force of Cuban exiles lands at the Bay of Pigs and is defeated within days",
+      "note": "Bridges Topic 4 (Cold War) and the Cuba country study."
+    },
+    {
+      "date": "1961-08-17",
+      "text": "The United States launches the Alliance for Progress at Punta del Este",
+      "note": "US economic response to the fear of further Cuban-style revolutions."
+    },
+    {
+      "date": "1962-10-16",
+      "text": "The Cuban Missile Crisis begins after US reconnaissance finds Soviet missile sites",
+      "note": "The closest the Cold War came to direct US–Soviet conflict."
+    },
+    {
+      "date": "1965-04-28",
+      "text": "US forces intervene in the Dominican Republic to prevent a feared communist takeover",
+      "note": "An early application of the Johnson administration's anti-communist intervention policy."
+    },
+    {
+      "date": "1970-09-04",
+      "text": "Salvador Allende is elected President of Chile, the first freely elected Marxist head of state in the Americas",
+      "note": "Sets up the events of September 1973."
+    },
+    {
+      "date": "1973-09-11",
+      "text": "The Chilean armed forces overthrow Allende",
+      "note": "Bridges Topic 4 and the Topic 6 country study."
+    },
+    {
+      "date": "1976-03-24",
+      "text": "A military junta led by Jorge Videla seizes power in Argentina, beginning the 'Dirty War'",
+      "note": "Part of the wider pattern of US-aligned military governments in the region during the 1970s."
+    },
+    {
+      "date": "1979-07-19",
+      "text": "The Sandinistas overthrow the Somoza dictatorship in Nicaragua",
+      "note": "Triggers US support for the Contra insurgency through the 1980s."
+    },
+    {
+      "date": "1983-10-25",
+      "text": "US forces invade Grenada following a coup against the government of Maurice Bishop",
+      "note": "Reagan-era justification: protecting American citizens and reversing a Marxist takeover."
+    },
+    {
+      "date": "1989-12-20",
+      "text": "The United States invades Panama to remove General Manuel Noriega from power",
+      "note": "One of the last major US interventions in the region before the Cold War's end."
+    },
+    {
+      "date": "1990-02-25",
+      "text": "The Sandinistas lose Nicaragua's presidential election to Violeta Chamorro",
+      "note": "A negotiated end to the decade's civil war, as the Cold War itself winds down."
+    }
+  ]
+}

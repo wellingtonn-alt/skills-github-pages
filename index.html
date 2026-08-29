@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chronology</title>
+<meta name="description" content="A tap-to-place chronology game for IB History classes.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <div>
+      <h2 class="site-title">📜 Chronology</h2>
+    </div>
+    <nav aria-label="Page controls">
+      <button type="button" id="display-toggle" class="display-toggle" aria-pressed="false">
+        <span aria-hidden="true">🔎</span> Big display mode
+      </button>
+      <a href="builder.html">Build a set</a>
+    </nav>
+  </header>
+
+  <main id="app" aria-live="polite">
+    <!-- Populated by js/game.js -->
+    <p>Loading…</p>
+  </main>
+
+  <p class="privacy-note">
+    Nothing on this screen is saved or sent anywhere — scores and progress live only in this browser tab and disappear when you leave the page.
+  </p>
+</div>
+
+<script src="js/dates.js"></script>
+<script src="js/sets.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
