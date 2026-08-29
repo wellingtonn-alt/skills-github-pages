@@ -210,6 +210,14 @@ a:focus-visible,
   box-shadow: 0 3px 0 var(--ink);
 }
 
+.deal-card[draggable="true"] {
+  cursor: grab;
+}
+
+.deal-card.dragging {
+  opacity: 0.5;
+}
+
 .deal-card .eyebrow {
   display: block;
   font-family: Arial, sans-serif;
@@ -319,6 +327,13 @@ a:focus-visible,
   background: #f7ebec;
   color: var(--accent);
   font-weight: bold;
+}
+
+.slot-button.drag-hover {
+  border-style: solid;
+  border-color: var(--good);
+  background: var(--good-bg);
+  color: var(--good);
 }
 
 .confirm-row {

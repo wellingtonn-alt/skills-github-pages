@@ -228,11 +228,21 @@
   }
 
   function confirmPlacement() {
-    if (state.selectedSlot === null || !state.current) return;
+    confirmPlacementAt(state.selectedSlot);
+  }
+
+  /**
+   * Commits the current card to a slot, whether it got there by two taps or
+   * by a single drag-and-drop. `slotIndex` is which gap in the timeline
+   * (0 = before everything, timeline.length = after everything) it was
+   * dropped/confirmed into.
+   */
+  function confirmPlacementAt(slotIndex) {
+    if (slotIndex === null || slotIndex === undefined || !state.current) return;
     const card = state.current;
     const acceptable = acceptableSlots(card.date);
-    const isCorrect = acceptable.includes(state.selectedSlot);
-    const insertAt = isCorrect ? state.selectedSlot : acceptable[0];
+    const isCorrect = acceptable.includes(slotIndex);
+    const insertAt = isCorrect ? slotIndex : acceptable[0];
 
     const revealedCard = Object.assign({ revealed: true }, card);
     state.timeline.splice(insertAt, 0, revealedCard);
@@ -302,10 +312,21 @@
     app.appendChild(feedback);
 
     if (state.current) {
-      const dealCard = el('div', { class: 'deal-card' });
+      const dealCard = el('div', {
+        class: 'deal-card',
+        draggable: 'true',
+        ondragstart: (e) => {
+          // Firefox won't start a drag unless data is set, even though we don't need to read it back.
+          e.dataTransfer.setData('text/plain', state.current.id);
+          e.dataTransfer.effectAllowed = 'move';
+          dealCard.classList.add('dragging');
+        },
+        ondragend: () => dealCard.classList.remove('dragging')
+      });
       dealCard.appendChild(el('span', { class: 'eyebrow', text: 'Place this event' }));
       dealCard.appendChild(document.createTextNode(state.current.text));
       app.appendChild(dealCard);
+      app.appendChild(el('p', { class: 'hint', text: 'Tap a gap below, then tap it again to confirm — or drag this card into place.' }));
     }
 
     app.appendChild(renderTimeline());
@@ -349,7 +370,17 @@
         'aria-pressed': String(isSelected),
         'aria-label': label,
         onclick: () => selectSlot(i),
-        onkeydown: (e) => handleSlotKeydown(e, i)
+        onkeydown: (e) => handleSlotKeydown(e, i),
+        ondragover: (e) => {
+          e.preventDefault(); // required to allow a drop at all
+          e.dataTransfer.dropEffect = 'move';
+          slot.classList.add('drag-hover');
+        },
+        ondragleave: () => slot.classList.remove('drag-hover'),
+        ondrop: (e) => {
+          e.preventDefault();
+          confirmPlacementAt(i);
+        }
       });
       slot.textContent = isSelected ? 'Tap again to confirm ↓' : '+';
       slot.dataset.slotIndex = String(i);
